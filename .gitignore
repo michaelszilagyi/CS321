@@ -3,3 +3,4 @@ bin/*
 .git/*
 *.jar
 target/*
+.DS_Store/*
