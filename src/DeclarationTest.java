@@ -1,46 +1,49 @@
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 import org.junit.jupiter.api.Test;
+import java.lang.reflect.*;
+import java.util.ArrayList;
 
 /*
  * This is the tester class for the Declaration busines object. 
  */
 public class DeclarationTest { 
+    Declaration decl1;
 
     //Checks that the Declaration constructor is correctly initializing variables.
+    //Then checks that the
     @Test
     void testConstructor(){
-        Declaration decl = new Declaration("10/20/2023", "Anna", "anna@gmail.com", 2, 1, "Charlie", 134, true, 1);
-        assertEquals("10/20/2023", decl.date);
-        assertEquals("Anna", decl.name);
-        assertEquals("anna@gmail.com", decl.email);
-        assertEquals(2, decl.durationOfSupport);
-        assertEquals(1, decl.applicantNumber);
-        assertEquals("Charlie", decl.immigrantName);
-        assertEquals(134, decl.alienNumber);
-        assertEquals(true, decl.isExpired);
-        assertEquals(1, decl.declarationID);
-    }
-    
-    //Checks that the Declaration constructor correctly creates an instance of the Declaration class.
-    @Test
-    void test_constructor_4(){
-        Declaration decl = new Declaration("10/20/2023", "Hannah", "hannah@gmail.com", 3, 2, "Jackson", 221, false, 2);
-        assertTrue(decl instanceof Declaration);
+        var fields = new ArrayList<Object>();
+        fields.add("10/20/2023"); fields.add("anna@gmail.com"); fields.add(2); fields.add(1);
+        fields.add("Charlie"); fields.add(134); fields.add(true); fields.add(1);
+
+        decl1 = new Declaration(fields);
+
+        int idx = 0;
+        for (Field f : Declaration.class.getFields()) {
+            try {
+            assertEquals(fields.get(idx), f.get(decl1));
+            } catch(Exception e) {
+                System.err.println("this should never run");
+                System.exit(idx);
+            }
+            idx++;
+        }
     }
 
     //Checks that the retrieveDeclaration method returns the correct Declaration object.
     @Test
-    void test_retrieve_1(){
+    void testRetrieve1(){
         Declaration decl = new Declaration("10/20/2023", "Hannah", "hannah@gmail.com", 3, 2, "Jackson", 221, false, 2);
         decl.save();
-        Declaration decl2 = new Declaration();
+
         assertTrue(decl2.retrieveDeclaration(2));
     }   
     
     //Checks that the retrieveDeclaration method correctly returns a Declaration object.
     @Test
-    void test_retrieve_2(){
+    void testRetrieve2(){
         Declaration decl = new Declaration("10/20/2023", "Hannah", "hannah@gmail.com", 3, 2, "Jackson", 221, false, 2);
         decl.save();
         Declaration decl2 = new Declaration();

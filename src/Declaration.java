@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 /*
  * This is the class which represents a user's declaration of financial support for an alien.
  * All of the relevant information is stored here before being sent to the Workflow/DB.
@@ -19,8 +20,8 @@ public class Declaration {
         
     }
 
-    //Constructor with parameters
-    public Declaration(String date, String name, String email, int durationOfSupport, int applicantNumber, String immigrantName, int alienNumber, Boolean isExpired, int declarationID){
+    //Constructor with list of parameters
+    public Declaration(ArrayList<Object> fields) {
         
     }
 
@@ -30,7 +31,7 @@ public class Declaration {
     }
 
     //Retrieves a specific Declaration from the Workflow.
-    public Declaration retrieveDeclaration(int declarationID){
+    public static Declaration retrieveDeclaration(int declarationID){
         return null;
     }
 
