@@ -15,5 +15,21 @@ public class WorkflowTest {
         assertEquals(temp, WorkflowTable.tasks);
     }
 
+    @Test
+    void test_2(){
+        WorkflowTable temp = new WorkflowTable();
+        int declID =temp.getNextItem("Review");
+        assertEquals(1, declID);
+    }
+
+    @Test
+    void test_3(){
+        Tuple task = new Tuple(1, "Review");
+        Tuple removedTask = WorkflowTable.removeTask();
+        assertEquals(task, removedTask);
+    }
+
+
+
     
 }
