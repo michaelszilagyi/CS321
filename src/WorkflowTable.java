@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class WorkflowTable {
-    public static Queue<Tuple> tasks = new LinkedList<Tuple>();
+    public static Queue<Task> tasks = new LinkedList<Task>();
 
     public WorkflowTable(){
 
@@ -15,7 +15,8 @@ public class WorkflowTable {
 
     }
 
-    public static Tuple removeTask(){
+    public static Task removeTask(){
         return null;
     }
 }
+

@@ -8,8 +8,8 @@ public class WorkflowTest {
     
     @Test
     void test_1(){
-        Queue<Tuple> temp = new LinkedList<Tuple>();
-        Tuple task = new Tuple(1, "Review");
+        Queue<Task> temp = new LinkedList<Task>();
+        Task task = new Task(1, "Review");
         temp.add(task);
         WorkflowTable.addTask(1, "Review");
         assertEquals(temp, WorkflowTable.tasks);
@@ -24,8 +24,8 @@ public class WorkflowTest {
 
     @Test
     void test_3(){
-        Tuple task = new Tuple(1, "Review");
-        Tuple removedTask = WorkflowTable.removeTask();
+        Task task = new Task(1, "Review");
+        Task removedTask = WorkflowTable.removeTask();
         assertEquals(task, removedTask);
     }
 
