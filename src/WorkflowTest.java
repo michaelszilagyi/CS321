@@ -17,15 +17,22 @@ public class WorkflowTest {
 
     @Test
     void testGetTask(){
-        WorkflowTable temp = new WorkflowTable();
-        int declID =temp.getTask(REVIEW);
-        assertEquals(1, declID);
+        var test_task = new Task(1, "")
+
+        var declID = WorkflowTable.getTask(WorkflowTable.Step.REVIEW);
+        assertEquals(1, declID.id);
     }
 
     @Test
-    void test_3(){
-        Task task = new Task(1, "Review");
-        Task removedTask = WorkflowTable.removeTask();
+    void testAddTask() {
+
+    }
+
+    @Test
+    void testRemoveTask(){
+        int id = 12;
+        Task task = new Task(id, WorkflowTable.Step.REVIEW);
+        Task removedTask = WorkflowTable.removeTask(id);
         assertEquals(task, removedTask);
     }
 

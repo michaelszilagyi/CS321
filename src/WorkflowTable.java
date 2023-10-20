@@ -1,7 +1,8 @@
 import java.util.*;
 
 public class WorkflowTable {
-    public enum WorkflowStep {
+    public enum Step {
+        ENTRY,
         REVIEW,
         APPROVAL
     }
@@ -11,7 +12,7 @@ public class WorkflowTable {
 
     }
 
-    public static Task getTask(WorkflowStep step){
+    public static Task getTask(Step step){
         return null;
     }
 

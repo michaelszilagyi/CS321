@@ -1,8 +1,8 @@
 public class Task {
     public int id;
-    public String step;
+    public WorkflowTable.Step step;
 
-    public Task(int declarationID, String step){
+    public Task(int declarationID, WorkflowTable.Step step){
         this.id = declarationID;
         this.step = step;
     }
