@@ -72,4 +72,18 @@ public class DeclarationTest {
         Declaration decl = new Declaration("1/20/20", "B4RACK", "obama@gmail.com", 3, 2, "0bama", 221, false, 2);
         assertFalse(decl.validate());
     }
+
+    //Checks the save function with a proper declaration
+    @Test
+    void test_save_1(){
+        Declaration decl = new Declaration("06/12/23", "Bob", "bob@gmail.com", 2, 3, "Joe", 147, false, 3);
+        assertTrue(decl.save());
+    }
+
+    //Checks the save function with a proper declaration
+    @Test
+    void test_save_2(){
+        Declaration decl = new Declaration("05/04/22", "Mary", "mary@gmail.com", 1, 4, "Sue", 267, false, 4);
+        assertTrue(decl.save());
+    }
 }
