@@ -23,7 +23,7 @@ public class WorkflowTest {
     }
 
     /* Tests getTask and addTask.
-     * Assumes table was properly initialized in previous test
+     * Assumes table was properly initialized in previous test.
      */
     @Test
     void testAddAndGet(){
@@ -43,6 +43,7 @@ public class WorkflowTest {
 
     /* Tests the removeTask method.
      * Assumes table has been initialized.
+     * Assumes the state of id is persistent.
      */
     @Test
     void testRemoveTask(){
