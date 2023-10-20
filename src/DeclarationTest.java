@@ -21,16 +21,17 @@ public class DeclarationTest {
         decl1 = new Declaration(fields);
 
         //iterate through all the fields and make sure they've been correctly initialized.
-        int idx = 0;
-        for (Field f : Declaration.class.getFields()) {
+        //the extra brace pair ensures idx goes out of scope afterwards
+        {
+        int idx = 0; for (Field f : Declaration.class.getFields()) {
             try {
-            assertEquals(fields.get(idx), f.get(decl1));
+                assertEquals(fields.get(idx), f.get(decl1));
             } catch(Exception e) {
                 System.err.println("this should never run");
                 System.exit(idx);
             }
             idx++;
-        }
+        }}
     }
 
     //Checks that the retrieveDeclaration method returns the correct Declaration object.
