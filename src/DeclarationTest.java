@@ -7,21 +7,9 @@ import org.junit.jupiter.api.Test;
  */
 public class DeclarationTest { 
 
-    @Test
-    void test_constructor_1(){
-        Declaration decl = new Declaration();
-        assertNull(decl);
-    }
-
-    @Test
-    void test_constructor_2(){
-        Declaration decl = new Declaration("10/19/2023", "John", "john@gmail.com", 4, 3, "Smith", 195, false, 1);
-        assertNull(decl);
-    }
-    
     //Checks that the Declaration constructor is correctly initializing variables.
     @Test
-    void test_constructor_3(){
+    void testConstructor(){
         Declaration decl = new Declaration("10/20/2023", "Anna", "anna@gmail.com", 2, 1, "Charlie", 134, true, 1);
         assertEquals("10/20/2023", decl.date);
         assertEquals("Anna", decl.name);
