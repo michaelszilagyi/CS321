@@ -7,18 +7,18 @@ import java.util.*;
 public class WorkflowTest {
     
     @Test
-    void test_1(){
+    void testConstructor(){
         Queue<Task> temp = new LinkedList<Task>();
         Task task = new Task(1, "Review");
         temp.add(task);
-        WorkflowTable.addTask(1, "Review");
+        WorkflowTable.addTask(task);
         assertEquals(temp, WorkflowTable.tasks);
     }
 
     @Test
-    void test_2(){
+    void testGetTask(){
         WorkflowTable temp = new WorkflowTable();
-        int declID =temp.getNextItem("Review");
+        int declID =temp.getTask(REVIEW);
         assertEquals(1, declID);
     }
 

@@ -1,22 +1,26 @@
 import java.util.*;
 
 public class WorkflowTable {
+    public enum WorkflowStep {
+        REVIEW,
+        APPROVAL
+    }
     public static Queue<Task> tasks = new LinkedList<Task>();
 
     public WorkflowTable(){
 
     }
 
-    public int getNextItem(String step){
-        return -1;
+    public static Task getTask(WorkflowStep step){
+        return null;
     }
 
-    public static void addTask(int id, String step){
+    public static void addTask(Task t){
 
     }
 
-    public static Task removeTask(){
+    /* This should remove the task with the given id, and then return it */
+    public static Task removeTask(int id){
         return null;
     }
 }
-
