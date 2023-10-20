@@ -19,7 +19,7 @@ public class DeclarationTest {
     @Test
     void test_3(){
         Declaration decl = new Declaration("10/20/2023", "Anna", "anna@gmail.com", 2, 1, "Charlie", 134, true, 1);
-        assertEquals("10/20/2023", decl.);
+        assertEquals("10/20/2023", decl.date);
         assertEquals("Anna", decl.name);
         assertEquals("anna@gmail.com", decl.email);
         assertEquals(2, decl.durationOfSupport);
