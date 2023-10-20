@@ -17,6 +17,27 @@ public class Declaration {
         
     }
 
+    public Boolean save(){
+        return null;
+    }
+
+    public Declaration retrieveDeclaration(int declarationID){
+        return null;
+    }
+
+    private void validate(){
+
+    }
+
+    public void create(){
+
+    }
+
+    public void checkPrevDeclaration(int applicantNumber){
+
+    }
+
+    /* Getter and Setter Methods */
     public String getDate(){
         return null;
     }
@@ -42,15 +63,51 @@ public class Declaration {
     }
 
     public int getDuration(){
-        return null;
+        return -1;
     }
 
     public void setDuration(int duration){
-        this.durationOfSupport = null;
+        this.durationOfSupport = -1;
     }
 
     public int getApplicantNumber(){
+        return -1;
+    }
+
+    public void setApplicantNumber(int applicantNumber){
+        this.applicantNumber = -1;
+    }
+
+    public String getImmigrantName(){
         return null;
+    }
+
+    public void setImmigrantName(String immigrantName){
+        this.immigrantName = null;
+    }
+
+    public int getAlienNumber(){
+        return -1;
+    }
+
+    public void setAlienNumber(int alienNumber){
+        this.alienNumber = -1;
+    }
+
+    public Boolean getIsExpired(){
+        return null;
+    }
+
+    public void setIsExpired(Boolean isExpired){
+        this.isExpired = null;
+    }
+
+    public int getDeclarationID(){
+        return -1;
+    }
+
+    public void setDelarationID(int declarationID){
+        this.declarationID = -1;
     }
 
 }
