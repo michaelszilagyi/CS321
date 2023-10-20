@@ -19,15 +19,15 @@ public class DeclarationTest {
     @Test
     void test_3(){
         Declaration decl = new Declaration("10/20/2023", "Anna", "anna@gmail.com", 2, 1, "Charlie", 134, true, 1);
-        assertEquals("10/20/2023", decl.getDate());
-        assertEquals("Anna", decl.getName());
-        assertEquals("anna@gmail.com", decl.getEmail());
-        assertEquals(2, decl.getDuration());
-        assertEquals(1, decl.getApplicantNumber());
-        assertEquals("Charlie", decl.getImmigrantName());
-        assertEquals(134, decl.getAlienNumber());
-        assertEquals(true, decl.getIsExpired());
-        assertEquals(1, decl.getDeclarationID());
+        assertEquals("10/20/2023", decl.);
+        assertEquals("Anna", decl.name);
+        assertEquals("anna@gmail.com", decl.email);
+        assertEquals(2, decl.durationOfSupport);
+        assertEquals(1, decl.applicantNumber);
+        assertEquals("Charlie", decl.immigrantName);
+        assertEquals(134, decl.alienNumber);
+        assertEquals(true, decl.isExpired);
+        assertEquals(1, decl.declarationID);
     }
 
     @Test
