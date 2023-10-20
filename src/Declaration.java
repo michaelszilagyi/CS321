@@ -15,6 +15,10 @@ public class Declaration {
     public Boolean isExpired;
     public int declarationID;
 
+    //for this minimum viable product, Declaration will just own the
+    //workflow table.
+    private static WorkflowTable table;
+
     //Constructor
     public Declaration(){
         

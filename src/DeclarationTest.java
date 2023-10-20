@@ -20,6 +20,7 @@ public class DeclarationTest {
 
         decl1 = new Declaration(fields);
 
+        //iterate through all the fields and make sure they've been correctly initialized.
         int idx = 0;
         for (Field f : Declaration.class.getFields()) {
             try {
@@ -34,11 +35,12 @@ public class DeclarationTest {
 
     //Checks that the retrieveDeclaration method returns the correct Declaration object.
     @Test
-    void testRetrieve1(){
-        Declaration decl = new Declaration("10/20/2023", "Hannah", "hannah@gmail.com", 3, 2, "Jackson", 221, false, 2);
-        decl.save();
+    void testRetrieve(){
 
-        assertTrue(decl2.retrieveDeclaration(2));
+        //This should just work without needing to do anything anywhere else in the codebase
+        decl1.save();
+
+        assertTrue(decl1 == Declaration.retrieveDeclaration(decl1.declarationID));
     }   
     
     //Checks that the retrieveDeclaration method correctly returns a Declaration object.
