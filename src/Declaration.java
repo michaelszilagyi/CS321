@@ -38,5 +38,4 @@ public class Declaration {
     private Boolean validate(){
         return false;
     }
-
 }
