@@ -23,7 +23,10 @@ public class DeclarationTest {
         decl1 = new Declaration(fields);
 
         //iterate through all the fields and make sure they've been correctly initialized.
-        //the extra brace pair ensures idx goes out of scope afterwards
+        //the extra brace pair ensures index goes out of scope afterwards.
+        //this is not safe code, since getFields does not guarantee ordering,
+        //but most java btyecode compilers tends to play nice.
+        //it should be ok for a minimum viable product, but ought to be refactored later.
         { int idx = 0; for (Field f : Declaration.class.getFields()) {
             try {
                 assertEquals(fields.get(idx), f.get(decl1));
