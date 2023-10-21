@@ -13,7 +13,6 @@ public class DeclarationTest {
     Declaration decl2;
     ArrayList<Object> fields;
 
-
     //Checks that the Declaration constructor is correctly initializing variables.
     @Test
     void testConstructor(){
@@ -98,7 +97,6 @@ public class DeclarationTest {
             }
             idx++;
         }}
-
     }
 
 
@@ -118,5 +116,4 @@ public class DeclarationTest {
         assertFalse(decl2.save());
         assertTrue(null == Declaration.retrieveDeclaration(decl2.applicantNumber));
     }
-    
 }
