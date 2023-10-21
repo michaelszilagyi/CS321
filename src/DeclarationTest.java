@@ -10,13 +10,15 @@ import java.util.ArrayList;
 public class DeclarationTest { 
     Declaration decl1;
     Declaration decl2;
+    ArrayList<Object> fields;
+
 
     //Checks that the Declaration constructor is correctly initializing variables.
     @Test
     void testConstructor(){
-        var fields = new ArrayList<Object>();
-        fields.add("10/20/2023"); fields.add("anna@gmail.com"); fields.add(2); fields.add(1);
-        fields.add("Charlie"); fields.add(134); fields.add(true); fields.add(1);
+        fields = new ArrayList<Object>();
+        fields.add("10/20/2023"); fields.add("Charlie"); fields.add("anna@gmail.com");
+        fields.add(134); fields.add(111); fields.add(134); fields.add(true); fields.add(1);
 
         decl1 = new Declaration(fields);
 
@@ -26,7 +28,8 @@ public class DeclarationTest {
             try {
                 assertEquals(fields.get(idx), f.get(decl1));
             } catch(Exception e) {
-                System.err.println("this should never run");
+                System.err.println(e);
+                System.err.println("this should never run unless the test itself has an error.");
                 System.exit(idx);
             }
             idx++;
@@ -60,16 +63,35 @@ public class DeclarationTest {
         decl2.declarationID = 44121;
         decl2.name = "Andrei Astapienia";
         
-        //incomplete declaration should not validate
-        assertFalse(decl2.validate());
 
+        //incomplete declaration should not validate
+        { int idx = 0; for (Field f : Declaration.class.getFields()) {
+
+            if (idx >= 8) { break; }
+
+            try {
+            f.set(decl2, fields.get(idx));
+            } catch(Exception e) {
+                System.err.println(e);
+                System.err.println("this should never run unless test itself has an error");
+                System.exit(idx);
+            }
+
+            assertFalse(decl2.validate());
+        }}
+        decl2.declarationID = 11211;
+        assertTrue(decl2.validate());
     }
 
 
+    //checks that the save function saves on a declaration that validates only
     @Test
     void testSave(){
-        //Checks the save function with a proper declaration
+        //Checks that the save function works with a proper declaration
         assertTrue(decl1.save());
+
+
+        decl2.date = null;
 
         //declaration that does not validate should not save
         assertFalse(decl2.save());

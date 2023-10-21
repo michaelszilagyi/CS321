@@ -8,9 +8,9 @@ public class Declaration {
     public String date;
     public String name;
     public String email;
-    public int durationOfSupport;
+    public int durationOfSupport; //days
     public int applicantNumber;
-    public String immigrantName;
+    public int immigrantName;
     public int alienNumber;
     public Boolean isExpired;
     public int declarationID;
