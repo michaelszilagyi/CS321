@@ -22,11 +22,14 @@ public class DeclarationTest {
 
         decl1 = new Declaration(fields);
 
-        //iterate through all the fields and make sure they've been correctly initialized.
-        //the extra brace pair ensures index goes out of scope afterwards.
-        //this is not safe code, since getFields does not guarantee ordering,
-        //but most java btyecode compilers tends to play nice.
-        //it should be ok for a minimum viable product, but ought to be refactored later.
+        /* iterate through all the fields and make sure they've been correctly initialized.
+         * the extra brace pair ensures index goes out of scope afterwards.
+         * this is not safe code, since getFields does not guarantee ordering,
+         * but most java btyecode compilers tends to play nice.
+         * It should be ok for a minimum viable product, but ought to be refactored later.
+         * The fix is to turn fields into a hashmap where the field names are the keys. Then
+         * the order of getFields() can be ignored.
+        */
         { int idx = 0; for (Field f : Declaration.class.getFields()) {
             try {
                 assertEquals(fields.get(idx), f.get(decl1));
