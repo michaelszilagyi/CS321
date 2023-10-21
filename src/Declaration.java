@@ -24,7 +24,9 @@ public class Declaration {
         
     }
 
-    /* This is almost definitely an antipattern; to be refactored */
+    /* This is definitely an antipattern but makes
+     * the class easy to test; to be refactored.
+     */
     //Constructor with list of parameters
     public Declaration(ArrayList<Object> fields) {
         

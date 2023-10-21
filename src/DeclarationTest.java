@@ -9,6 +9,7 @@ import java.util.ArrayList;
  */
 public class DeclarationTest { 
     Declaration decl1;
+    Declaration decl2;
 
     //Checks that the Declaration constructor is correctly initializing variables.
     @Test
@@ -41,32 +42,37 @@ public class DeclarationTest {
 
         //assert that the declaration can be retrieved correctly
         assertTrue(decl1 == Declaration.retrieveDeclaration(decl1.declarationID));
-
-        //this might be redundant given the above assertion. to be refactored
-        assertTrue((decl1.retrieveDeclaration(decl1.declarationID)) instanceof Declaration);
     }
     
     //Checks the validate function with valid formatting.
     @Test
-    void test_validate_1(){
+    void testValidate(){
 
         //later on validate may not be public, but it's easier to test like this
         assertTrue(decl1.validate());
 
-        var decl2 = new Declaration();
+        decl2 = new Declaration();
 
         //empty declaration should not validate
         assertFalse(decl2.validate());
+
+        decl2.applicantNumber = 1121;
+        decl2.declarationID = 44121;
+        decl2.name = "Andrei Astapienia";
         
+        //incomplete declaration should not validate
+        assertFalse(decl2.validate());
+
     }
 
 
     @Test
-    void test_save_1(){
+    void testSave(){
         //Checks the save function with a proper declaration
         assertTrue(decl1.save());
 
-        //Checks the save function with an  improper declaration
-        assertTrue(decl2.save());
+        //declaration that does not validate should not save
+        assertFalse(decl2.save());
+        assertTrue(null == Declaration.retrieveDeclaration(decl2.applicantNumber));
     }
 }
