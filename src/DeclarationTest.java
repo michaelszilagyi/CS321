@@ -109,7 +109,6 @@ public class DeclarationTest {
         //assert that the declaration can be retrieved correctly
         assertTrue(decl1 == Declaration.retrieveDeclaration(decl1.declarationID));
 
-
         decl2.date = null;
 
         //declaration that does not validate should not save
