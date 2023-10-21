@@ -2,6 +2,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 import org.junit.jupiter.api.Test;
 import java.lang.reflect.*;
+import java.lang.Integer;
 import java.util.ArrayList;
 
 /*
@@ -39,17 +40,6 @@ public class DeclarationTest {
         }}
     }
 
-    //Checks that the retrieveDeclaration method returns the correct Declaration object.
-    @Test
-    void testRetrieve(){
-
-        //This should just work without needing to do anything anywhere else in the codebase
-        decl1.save();
-
-        //assert that the declaration can be retrieved correctly
-        assertTrue(decl1 == Declaration.retrieveDeclaration(decl1.declarationID));
-    }
-    
     //Checks the validate function with valid formatting.
     @Test
     void testValidate(){
@@ -74,24 +64,52 @@ public class DeclarationTest {
 
             try {
             f.set(decl2, fields.get(idx));
-            } catch(Exception e) {
-                System.err.println(e);
-                System.err.println("this should never run unless test itself has an error");
-                System.exit(idx);
-            }
 
             assertFalse(decl2.validate());
+
+            } catch(Exception e) {
+                System.err.println(e);
+                System.exit(idx);
+            }
+            idx++;
         }}
+
+        //once completed, should validate
         decl2.declarationID = 11211;
         assertTrue(decl2.validate());
+
+        //checking that negative entries don't validate
+        { int idx = 0; for (Field f : Declaration.class.getFields()) {
+            try {
+            if(f.getType() == Integer.class) {
+                int number = (Integer) fields.get(idx);
+                f.set(decl2, -number);
+
+                //negative entries should not validate
+                assertFalse(decl2.validate());
+
+                //should validate after entry has been fixed
+                f.set(decl2, number);
+                assertTrue(decl2.validate());
+            }
+            } catch(Exception e) {
+                System.err.println(e);
+                System.exit(idx);
+            }
+            idx++;
+        }}
+
     }
 
 
     //checks that the save function saves on a declaration that validates only
     @Test
-    void testSave(){
+    void testSaveAndRetrieve(){
         //Checks that the save function works with a proper declaration
         assertTrue(decl1.save());
+
+        //assert that the declaration can be retrieved correctly
+        assertTrue(decl1 == Declaration.retrieveDeclaration(decl1.declarationID));
 
 
         decl2.date = null;
@@ -100,4 +118,5 @@ public class DeclarationTest {
         assertFalse(decl2.save());
         assertTrue(null == Declaration.retrieveDeclaration(decl2.applicantNumber));
     }
+    
 }
