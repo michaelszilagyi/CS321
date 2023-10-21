@@ -24,6 +24,7 @@ public class Declaration {
         
     }
 
+    /* This is almost definitely an antipattern; to be refactored */
     //Constructor with list of parameters
     public Declaration(ArrayList<Object> fields) {
         
@@ -40,7 +41,7 @@ public class Declaration {
     }
 
     //Does basic checks to ensure the user inputted information is correctly formatted.
-    private Boolean validate(){
+    public Boolean validate(){
         return false;
     }
 }

@@ -11,7 +11,6 @@ public class DeclarationTest {
     Declaration decl1;
 
     //Checks that the Declaration constructor is correctly initializing variables.
-    //Then checks that the
     @Test
     void testConstructor(){
         var fields = new ArrayList<Object>();
@@ -22,8 +21,7 @@ public class DeclarationTest {
 
         //iterate through all the fields and make sure they've been correctly initialized.
         //the extra brace pair ensures idx goes out of scope afterwards
-        {
-        int idx = 0; for (Field f : Declaration.class.getFields()) {
+        { int idx = 0; for (Field f : Declaration.class.getFields()) {
             try {
                 assertEquals(fields.get(idx), f.get(decl1));
             } catch(Exception e) {
@@ -41,43 +39,34 @@ public class DeclarationTest {
         //This should just work without needing to do anything anywhere else in the codebase
         decl1.save();
 
+        //assert that the declaration can be retrieved correctly
         assertTrue(decl1 == Declaration.retrieveDeclaration(decl1.declarationID));
-    }   
-    
-    //Checks that the retrieveDeclaration method correctly returns a Declaration object.
-    @Test
-    void testRetrieve2(){
-        Declaration decl = new Declaration("10/20/2023", "Hannah", "hannah@gmail.com", 3, 2, "Jackson", 221, false, 2);
-        decl.save();
-        Declaration decl2 = new Declaration();
-        assertTrue((decl2.retrieveDeclaration(2)) instanceof Declaration);
+
+        //this might be redundant given the above assertion. to be refactored
+        assertTrue((decl1.retrieveDeclaration(decl1.declarationID)) instanceof Declaration);
     }
     
     //Checks the validate function with valid formatting.
     @Test
     void test_validate_1(){
-        Declaration decl = new Declaration("10/20/2023", "Hannah", "hannah@gmail.com", 3, 2, "Jackson", 221, false, 2);
-        assertTrue(decl.validate());
-    }
-    
-    //Checks the validate function with invalid formatting.
-    @Test
-    void test_validate_2(){
-        Declaration decl = new Declaration("1/20/20", "B4RACK", "obama@gmail.com", 3, 2, "0bama", 221, false, 2);
-        assertFalse(decl.validate());
+
+        //later on validate may not be public, but it's easier to test like this
+        assertTrue(decl1.validate());
+
+        var decl2 = new Declaration();
+
+        //empty declaration should not validate
+        assertFalse(decl2.validate());
+        
     }
 
-    //Checks the save function with a proper declaration
+
     @Test
     void test_save_1(){
-        Declaration decl = new Declaration("06/12/23", "Bob", "bob@gmail.com", 2, 3, "Joe", 147, false, 3);
-        assertTrue(decl.save());
-    }
+        //Checks the save function with a proper declaration
+        assertTrue(decl1.save());
 
-    //Checks the save function with a proper declaration
-    @Test
-    void test_save_2(){
-        Declaration decl = new Declaration("05/04/22", "Mary", "mary@gmail.com", 1, 4, "Sue", 267, false, 4);
-        assertTrue(decl.save());
+        //Checks the save function with an  improper declaration
+        assertTrue(decl2.save());
     }
 }
