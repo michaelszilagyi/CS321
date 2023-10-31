@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 /*
  * This is the class which represents a user's declaration of financial support for an alien.
  * All of the relevant information is stored here before being sent to the Workflow/DB.
@@ -19,16 +21,17 @@ public class Declaration {
     //workflow table.
     private static WorkflowTable table;
 
-    //Constructor
-    public Declaration(){
-        
+    public static Declaration create() {
+        return null;
     }
 
-    /* This is definitely an antipattern but makes
-     * the class easy to test; to be refactored.
-     */
-    //Constructor with list of parameters
-    public Declaration(ArrayList<Object> fields) {
+    public static Declaration create(Map<String,Object> fields) {
+        var possible_fields = new HashMap<String, String>();
+        return null;
+    }
+
+    //Constructor with table of parameters
+    private Declaration(Map<String, Object> fields) {
         
     }
 

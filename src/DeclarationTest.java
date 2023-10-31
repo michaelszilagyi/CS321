@@ -49,7 +49,7 @@ public class DeclarationTest {
         //later on validate may not be public, but it's easier to test like this
         assertTrue(decl1.validate());
 
-        decl2 = new Declaration();
+        decl2 = Declaration.create();
 
         //empty declaration should not validate
         assertFalse(decl2.validate());
