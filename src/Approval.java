@@ -3,7 +3,7 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.lang.reflect.*;
 
 public class Approval extends Application {
@@ -23,14 +23,29 @@ public class Approval extends Application {
 
       //Create a GridPane to organize the form elements
       GridPane grid = new GridPane();
+
       grid.setHgap(12);
       grid.setVgap(15);
 
       // Create text that displays fields of declaration
-      var fields = Declaration.class.getFields();
-      
-      for(Field field : fields) {
-         field.getName()
+      var dec_fields = Declaration.class.getFields();
+      var text_fields = new ArrayList<TextField>();
+      for(Field field : dec_fields) {
+         Object f;
+
+         try { f = field.get(dec); } catch (Exception e) { continue; }
+
+         if (f instanceof String) {
+            text_fields.add(new TextField(field.getName() + f));
+         } else if (f instanceof Integer) {
+            String num = Integer.toString((Integer) f);
+            text_fields.add(new TextField(field.getName() + num));
+         } else if (f instanceof Boolean) {
+            String cond = 
+            text_fields.add(field.getName() + f);
+         }
+         var name = field.getName();
+
       }
 
       // Add the elements to the GridPane

@@ -6,15 +6,15 @@ import java.util.HashMap;
  * Basic validation also occurs here to ensure proper formatting.
  */
 public class Declaration {
-    public String date;
-    public String name;
-    public String email;
-    public int durationOfSupport; //days
-    public int applicantNumber;
+    public String date = null;
+    public String name = null;
+    public String email = null;
+    public int durationOfSupport = -1; //days
+    public int applicantNumber = -1;
     public String immigrantName;
-    public int alienNumber;
-    public Boolean isExpired;
-    public int declarationID;
+    public int alienNumber = -1;
+    public Boolean isExpired = true;
+    public int declarationID = -1;
 
     //for this minimum viable product, Declaration will just own the
     //workflow table.
@@ -39,7 +39,7 @@ public class Declaration {
             this.date = date; this.name = name; this.email = email;
             this.durationOfSupport = durationOfSupport; this.applicantNumber = applicantNumber;
             this.immigrantName = immigrantName;  this.alienNumber = alienNumber;
-            this.isExpired = isExpired; this.declarationID = declarationID;    
+            this.isExpired = isExpired; this.declarationID = declarationID;
         }
 
     //Saves the Declaration to the Workflow.
