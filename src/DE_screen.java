@@ -2,32 +2,28 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
-import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.geometry.*;
 import javafx.scene.layout.GridPane;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-
- 
 public class DE_screen extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
     @Override
     public void start(Stage primaryStage) {
-        
+
         //create the grid to hold all the elements
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
-        grid.setVgap(10);
-        grid.setHgap(10);
+        grid.setVgap(15);
+        grid.setHgap(15);
 
         //Title label
         primaryStage.setTitle("Data Entry");
@@ -90,6 +86,7 @@ public class DE_screen extends Application {
         //SUBMIT BUTTON
         Button submit = new Button("Submit");
         GridPane.setConstraints(submit, 0, 8);
+        submit.setMaxWidth(100);
         grid.getChildren().add(submit);
 
         //ERROR LABEL
@@ -97,20 +94,48 @@ public class DE_screen extends Application {
         GridPane.setConstraints(errorLabel, 0, 9);
         GridPane.setColumnSpan(errorLabel, 2);
         grid.getChildren().add(errorLabel);
+        errorLabel.setFont(new Font("Montserrat", 14));
 
+        //Handle the click for the submit button
         submit.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
                 public void handle(ActionEvent e) {
-                    if ((appnum.getText() != null && !appnum.getText().isEmpty())) {
-                        errorLabel.setText(name.getText() + " " + date.getText() + ", "
-                            + "Your declaration has been submitted successfully. Have a great day!");
-                    } else {
-                        errorLabel.setText("You are missing the Applicant Number");
+                    errorLabel.setTextFill(Color.color(1, 0, 0));
+                    if (!(name.getText() != null && !name.getText().isEmpty())) {
+                        errorLabel.setText("You are missing the name. Make sure you have formatted it correctly.");
+                        return;
+                    } 
+                    if (!(date.getText() != null && !date.getText().isEmpty())) {
+                        errorLabel.setText("You are missing the date. Make sure you have formatted it correctly.");
+                        return;
                     }
-                }
-            });
-
+                    if (!(email.getText() != null && !email.getText().isEmpty())) {
+                        errorLabel.setText("You are missing the email. Make sure you have formatted it correctly.");
+                        return;
+                    } 
+                    if (!(duration.getText() != null && !duration.getText().isEmpty())) {
+                        errorLabel.setText("You are missing the duration. Make sure you have formatted it correctly.");
+                        return;
+                    }
+                    if (!(appnum.getText() != null && !appnum.getText().isEmpty())) {
+                        errorLabel.setText("You are missing the Applicant Number. Make sure you have formatted it correctly.");
+                        return;
+                    }
+                    if (!(iname.getText() != null && !iname.getText().isEmpty())) {
+                        errorLabel.setText("You are missing the immigrant name. Make sure you have formatted it correctly.");
+                        return;
+                    }  
+                    if (!(anum.getText() != null && !anum.getText().isEmpty())) {
+                        errorLabel.setText("You are missing the alien number. Make sure you have formatted it correctly.");
+                        return;
+                    }
+                    //all fields are present and valid!
+                    //call submit to save the Declaration and send it to the next step in the workflow
+                    errorLabel.setTextFill(Color.color(0, 0, 0));
+                    errorLabel.setText("Your Declaration has been submitted. Have a great day!");
+        }});
+            
+        //do nice formatting stuff
         grid.setAlignment(Pos.CENTER);
 
         Platform.runLater(() -> grid.requestFocus());
