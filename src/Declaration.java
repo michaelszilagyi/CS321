@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 /*
@@ -12,7 +11,7 @@ public class Declaration {
     public String email;
     public int durationOfSupport; //days
     public int applicantNumber;
-    public int immigrantName;
+    public String immigrantName;
     public int alienNumber;
     public Boolean isExpired;
     public int declarationID;
@@ -31,9 +30,17 @@ public class Declaration {
     }
 
     //Constructor with table of parameters
-    private Declaration(Map<String, Object> fields) {
+    public Declaration(Map<String, Object> fields) {
         
     }
+
+    public Declaration(String date, String name, String email, int durationOfSupport,
+        int applicantNumber, String immigrantName, int alienNumber, Boolean isExpired, int declarationID) {
+            this.date = date; this.name = name; this.email = email;
+            this.durationOfSupport = durationOfSupport; this.applicantNumber = applicantNumber;
+            this.immigrantName = immigrantName;  this.alienNumber = alienNumber;
+            this.isExpired = isExpired; this.declarationID = declarationID;    
+        }
 
     //Saves the Declaration to the Workflow.
     public Boolean save(){

@@ -1,26 +1,37 @@
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import java.util.HashMap;
+import java.lang.reflect.*;
 
 public class Approval extends Application {
+   private Declaration dec;
 
+   private Declaration make_test_decl() {
+      return new Declaration("2/27/1990", "Faustino Freidman", "Faustino@Freidman.gmail.com",
+         12, 11111, "Miguelina Thursby",
+         222222, false, 1313131);
+   }
+
+
+   //precondition: dec must have been instantiated
     @Override
     public void start(Stage primaryStage) {
-      primaryStage.setTitle("Form Document");
+      primaryStage.setTitle("Approval");
 
-      // Create a GridPane to organize the form elements
+      //Create a GridPane to organize the form elements
       GridPane grid = new GridPane();
-      grid.setHgap(10);
-      grid.setVgap(10);
+      grid.setHgap(12);
+      grid.setVgap(15);
 
-      // Create labels and text fields for the form
-      Label nameLabel = new Label("Name:");
-      TextField nameField = new TextField();
-
-      Label emailLabel = new Label("Email:");
-      TextField emailField = new TextField();
+      // Create text that displays fields of declaration
+      var fields = Declaration.class.getFields();
+      
+      for(Field field : fields) {
+         field.getName()
+      }
 
       // Add the elements to the GridPane
       grid.add(nameLabel, 0, 0);
@@ -51,6 +62,7 @@ public class Approval extends Application {
     }
 
     public static void main(String[] args) {
+      dec = make_test_decl();
       launch();
     }
 
