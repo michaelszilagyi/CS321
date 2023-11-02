@@ -20,7 +20,7 @@ public class DeclarationTest {
         fields.add("10/20/2023"); fields.add("Charlie"); fields.add("anna@gmail.com");
         fields.add(134); fields.add(111); fields.add(134); fields.add(true); fields.add(1);
 
-        decl1 = new Declaration(fields);
+        decl1 = Declaration.create(fields);
 
         /* iterate through all the fields and make sure they've been correctly initialized.
          * the extra brace pair ensures index goes out of scope afterwards.
