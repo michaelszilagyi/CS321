@@ -130,9 +130,18 @@ public class DE_screen extends Application {
                         return;
                     }
                     //all fields are present and valid!
-                    //call submit to save the Declaration and send it to the next step in the workflow
-                    errorLabel.setTextFill(Color.color(0, 0, 0));
-                    errorLabel.setText("Your Declaration has been submitted. Have a great day!");
+                    //call submit to create and save the Declaration and send it to the next step in the workflow
+                    boolean bad = false;
+                    try {
+                        Declaration d = new Declaration(date.getText(), name.getText(), email.getText(), Integer.parseInt(duration.getText()), Integer.parseInt(appnum.getText()), iname.getText(), Integer.parseInt(anum.getText()), false, 0);
+                    } catch (Exception x){
+                        errorLabel.setText("WARNING: Check formatting for all fields. Make sure number fields only include numerical digits.");
+                        bad = true;
+                    }
+                    if(!bad){
+                        errorLabel.setTextFill(Color.color(0, 0, 0));
+                        errorLabel.setText("Your Declaration has been submitted. Have a great day!");                        
+                    }
         }});
             
         //do nice formatting stuff
@@ -144,7 +153,7 @@ public class DE_screen extends Application {
         Background background = new Background(backgroundFill);
         grid.setBackground(background);
 
-        primaryStage.setScene(new Scene(grid, 600, 500));
+        primaryStage.setScene(new Scene(grid, 800, 600));
         primaryStage.show();
     }
 }
