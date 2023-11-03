@@ -39,12 +39,24 @@ public class Approval extends Application {
       // Create an approval button
       Button approveButton = new Button("Approve");
       approveButton.setOnAction(e -> {
+         //clear previous declaration
+         vbox.getChildren().clear();
+
+         //add the get next button
+         vbox.getChildren().add(getNextButton);
+
          //to add during next sprint
       });
 
       //create a rejection button
       Button rejectButton = new Button("Reject");
       rejectButton.setOnAction(e -> {
+         //clear previous declaration
+         vbox.getChildren().clear();
+
+         //add the get next button
+         vbox.getChildren().add(getNextButton);
+
          //to add during next sprint
       });
 
@@ -55,7 +67,7 @@ public class Approval extends Application {
          //clear previous declaration
          vbox.getChildren().clear();
 
-         //readd the get next button
+         //add the get next button
          vbox.getChildren().add(getNextButton);
 
 
