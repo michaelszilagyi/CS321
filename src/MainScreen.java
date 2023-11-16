@@ -42,17 +42,37 @@ public class MainScreen extends Application {
                 primaryStage.setTitle("Main Screen");
                 Label topLabel = new Label();
                 topLabel.setText("Main Screen");
-                topLabel.setFont(new Font("Montserrat", 24));
+                topLabel.setFont(new Font("Montserrat", 32));
                 GridPane.setConstraints(topLabel, 0, 0);
                 grid.getChildren().add(topLabel);
 
-                //HOME BUTTON
+                //DE BUTTON
                 Button DE = new Button("Data Entry");
                 GridPane.setConstraints(DE, 0, 2);
-                DE.setMaxWidth(100);
+                DE.setMaxWidth(150);
                 grid.getChildren().add(DE);
                 DE.setOnAction(e -> primaryStage.setScene(DE_screen.getScene()));
 
+                //REVIEW BUTTON
+                Button REV = new Button("Review");
+                GridPane.setConstraints(REV, 0, 3);
+                REV.setMaxWidth(150);
+                grid.getChildren().add(REV);
+                //change this to go to your screen
+                //REV.setOnAction(e -> primaryStage.setScene(DE_screen.getScene()));
+
+                //APPROVER BUTTON
+                Button APPROVE = new Button("Approver");
+                GridPane.setConstraints(APPROVE, 0, 4);
+                APPROVE.setMaxWidth(150);
+                grid.getChildren().add(APPROVE);
+                //same as above review button
+                //DE.setOnAction(e -> primaryStage.setScene(DE_screen.getScene()));
+                
+                grid.setAlignment(Pos.CENTER);
+                BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTBLUE, null, null);
+                Background background = new Background(backgroundFill);
+                grid.setBackground(background);
                 Scene ourScene = new Scene(grid, 800, 600);
                 mainStage = primaryStage;
                 mainScene = ourScene;

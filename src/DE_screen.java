@@ -165,9 +165,12 @@ public class DE_screen extends Application {
         return DE;
     }
 
+
+    //NOT REALLY USED ANYMORE - this would only be used if you were directly calling the DE screen
+    //but usually you will call the main screen which will use the above block of code if it wants
+    //to access this screen.
     @Override
     public void start(Stage primaryStage) {
-
         //create the grid to hold all the elements
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
