@@ -38,4 +38,18 @@ public class Declaration {
     public Boolean validate(){
         return false;
     }
+
+    //returns a Declaration object from the database (held in the Main Screen, accessed through here)
+    public static Declaration getFromDB(Integer id){
+        for(Declaration d : MainScreen.database){
+            if(d.declarationID == id){
+                return d;
+            }
+        }
+        return null;
+    }
+
+    public static void addToDB(Declaration d){
+        MainScreen.database.add(d);
+    }
 }

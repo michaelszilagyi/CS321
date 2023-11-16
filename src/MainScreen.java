@@ -1,23 +1,26 @@
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.geometry.*;
 import javafx.scene.layout.GridPane;
-import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import java.util.LinkedList;
+
 
 
 public class MainScreen extends Application {
 
         private static Stage mainStage;
         private static Scene mainScene;
+
+        //the main screen will keep track of the database to keep things simple
+        public static LinkedList<Declaration> database;
         
         public static void main(String[] args){
+                database = new LinkedList<Declaration>();
                 launch(args);
         }
 
