@@ -8,6 +8,8 @@ public class WorkflowTable {
         REVIEW,
         APPROVAL
     }
+    //removed the need for the task class by just using a LinkedHashMap
+    //this will keep all declarationID's and their step in order of insertion
     private static LinkedHashMap<Integer,Step> WF;
 
     /* work */
