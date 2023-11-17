@@ -158,10 +158,16 @@ public class Review_Screen extends Application {
                 field.setText("");
             }
 
+            /* SUBMISSION MESSAGE */
+            resultLabel.setText("Declaration " + taskID + " submitted");
+
         });
 
         /* GET NEXT BUTTON ACTIONS */
         getNext.setOnAction(e -> {
+            /* RESET MESSAGE */
+            resultLabel.setText("");
+            
             /* GET NEXT DEC ID + CHECK IF NULL */
             taskID = WorkflowTable.getTask(WorkflowTable.Step.REVIEW);
             if (taskID == null){
