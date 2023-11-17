@@ -17,7 +17,7 @@ public class WorkflowTable {
         
     }
 
-    public Integer getTask(Step step){
+    public static Integer getTask(Step step){
         Set<Integer> keys = WF.keySet();
         for(Integer key : keys){
             if(WF.get(key) == step){
@@ -33,13 +33,13 @@ public class WorkflowTable {
         return null;
     }
 
-    public void addTask(Integer DeclarationID, Step step){
+    public static void addTask(Integer DeclarationID, Step step){
         //puts the given information at the end of the LinkedHashMap
         WF.put(DeclarationID,step);
     }
 
     /* This should remove the task with the given id*/
-    public void removeTask(Integer DeclarationID){
+    public static void removeTask(Integer DeclarationID){
         WF.remove(DeclarationID);
     }
 }

@@ -18,10 +18,14 @@ public class Declaration {
     public Boolean isExpired = true;
     public int declarationID = -1;
 
-    Random rand = new Random();
+    static Random rand = new Random();
     
-    public static Declaration create() {
-        return null;
+    public static Declaration create(String date, String name, String email, int durationOfSupport,
+    int applicantNumber, String immigrantName, int alienNumber, Boolean isExpired, int declarationID) {
+
+        //use the constructor to create a declaration object and return it
+        //randomly generate a unique declarationID to go along with it
+        return new Declaration(date, name, email, durationOfSupport, alienNumber, immigrantName, alienNumber, isExpired, rand.nextInt(5000));
     }
 
     public Declaration(String date, String name, String email, int durationOfSupport,
@@ -29,9 +33,7 @@ public class Declaration {
             this.date = date; this.name = name; this.email = email;
             this.durationOfSupport = durationOfSupport; this.applicantNumber = applicantNumber;
             this.immigrantName = immigrantName;  this.alienNumber = alienNumber;
-            this.isExpired = isExpired;
-            //generate a random unique DeclarationID to identify this object
-            this.declarationID = rand.nextInt(5000);
+            this.isExpired = isExpired;            
         }
 
     //Does basic checks to ensure the user inputted information is correctly formatted.

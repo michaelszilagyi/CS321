@@ -105,6 +105,7 @@ public class DE_screen extends Application {
 
         home.setOnAction(e -> //Get back to main menu - get its stage and set its stage
         MainScreen.getStage().setScene(MainScreen.getScene()));
+
         //Handle the click for the submit button
         submit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -141,13 +142,18 @@ public class DE_screen extends Application {
                     //all fields are present and valid!
                     //call submit to create and save the Declaration and send it to the next step in the workflow
                     boolean bad = false;
+                    Declaration d = null;
                     try {
-                        Declaration d = new Declaration(date.getText(), name.getText(), email.getText(), Integer.parseInt(duration.getText()), Integer.parseInt(appnum.getText()), iname.getText(), Integer.parseInt(anum.getText()), false, 0);
+                        d = Declaration.create(date.getText(), name.getText(), email.getText(), Integer.parseInt(duration.getText()), Integer.parseInt(appnum.getText()), iname.getText(), Integer.parseInt(anum.getText()), false, 0);
                     } catch (Exception x){
                         errorLabel.setText("WARNING: Check formatting for all fields. Make sure number fields only include numerical digits.");
                         bad = true;
                     }
                     if(!bad){
+                        //add it to the workflow and database
+                        MainScreen.database.add(d);
+                        WorkflowTable.addTask(d.declarationID,WorkflowTable.Step.ENTRY);
+
                         errorLabel.setTextFill(Color.color(0, 0, 0));
                         errorLabel.setText("Your Declaration has been submitted. Have a great day!");                        
                     }
