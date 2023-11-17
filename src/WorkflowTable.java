@@ -10,7 +10,7 @@ public class WorkflowTable {
     }
     //removed the need for the task class by just using a LinkedHashMap
     //this will keep all declarationID's and their step in order of insertion
-    public static LinkedHashMap<Integer,Step> WF  = new LinkedHashMap<Integer,Step>();
+    private static LinkedHashMap<Integer,Step> WF  = new LinkedHashMap<Integer,Step>();
 
     /* work */
     public WorkflowTable(){

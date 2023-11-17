@@ -25,7 +25,8 @@ public class Declaration {
 
         //use the constructor to create a declaration object and return it
         //randomly generate a unique declarationID to go along with it
-        return new Declaration(date, name, email, durationOfSupport, alienNumber, immigrantName, alienNumber, isExpired, rand.nextInt(5000));
+        Declaration dd = new Declaration(date, name, email, durationOfSupport, alienNumber, immigrantName, alienNumber, isExpired, rand.nextInt(5000));
+        return dd;
     }
 
     public Declaration(String date, String name, String email, int durationOfSupport,
@@ -33,7 +34,7 @@ public class Declaration {
             this.date = date; this.name = name; this.email = email;
             this.durationOfSupport = durationOfSupport; this.applicantNumber = applicantNumber;
             this.immigrantName = immigrantName;  this.alienNumber = alienNumber;
-            this.isExpired = isExpired;            
+            this.isExpired = isExpired; this.declarationID = declarationID;           
         }
 
     //Does basic checks to ensure the user inputted information is correctly formatted.

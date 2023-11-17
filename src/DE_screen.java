@@ -153,7 +153,7 @@ public class DE_screen extends Application {
                         //add it to the workflow and database
                         MainScreen.database.add(d);
                         WorkflowTable.addTask(d.declarationID,WorkflowTable.Step.REVIEW);
-                        System.out.println("WF Size: "+WorkflowTable.WF.size()+ "ID: "+d.declarationID);
+                        //System.out.println("WF Size: "+WorkflowTable.WF.size()+ "ID: "+d.declarationID);
 
                         errorLabel.setTextFill(Color.color(0, 0, 0));
                         errorLabel.setText("Your Declaration has been submitted. Have a great day!"); 
