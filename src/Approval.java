@@ -70,8 +70,8 @@ public class Approval extends Application {
       Button rejectButton = new Button("Reject");
       rejectButton.setOnAction(e -> {
          //var getNextButton = getByUserData(vbox, "getNextButton");
-         DeclarationaddToDB(dec);
-         WorkflowTable.addTask(dec.declarationID,dec.REVIEW);
+         Declaration.addToDB(dec);
+         WorkflowTable.addTask(dec.declarationID,WorkflowTable.Step.REVIEW);
          Button oldNextButton = null;
          for (Node n : vbox.getChildren()) {
             if (gnb_name.equals(n.getUserData())) {
