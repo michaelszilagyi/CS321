@@ -4,6 +4,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.util.ArrayList;
+
+import org.hamcrest.Condition.Step;
+
 import java.lang.reflect.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -100,8 +103,12 @@ public class Approval extends Application {
          vbox.getChildren().add(getNextButton);
 
 
-         //todo next sprint: obtain next declaration
-         dec = MainScreen.database.isEmpty() ? null : MainScreen.database.pop();
+         //todo next sprint: obtain next declaration WorkflowTable.getTask(APPROVAL)
+         dec = null;
+         if(!MainScreen.database.isEmpty()) {
+            var n = WorkflowTable.getTask(WorkflowTable.Step.APPROVAL);
+            Declaration.getFromDB(n);
+         }
          if (dec != null) {
             // Create text that displays fields of declaration
             var dec_fields = Declaration.class.getFields();
