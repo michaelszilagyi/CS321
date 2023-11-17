@@ -54,4 +54,8 @@ public class Declaration {
     public static void addToDB(Declaration d){
         MainScreen.database.add(d);
     }
+
+    public static void removeFromDB(Integer id){
+        MainScreen.database.remove(getFromDB(id));
+    }
 }
