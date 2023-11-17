@@ -93,52 +93,60 @@ public class Approval extends Application {
          //clear previous declaration
          vbox.getChildren().clear();
 
+         //add home button
+         vbox.getChildren().add(home);
+         
          //add the get next button
          vbox.getChildren().add(getNextButton);
 
 
          //todo next sprint: obtain next declaration
-         dec = make_test_decl();
+         dec = MainScreen.database.isEmpty() ? null : MainScreen.database.pop();
+         if (dec != null) {
+            // Create text that displays fields of declaration
+            var dec_fields = Declaration.class.getFields();
+            var text_fields = new ArrayList<Label>();
+            for(Field field : dec_fields) {
+               Object f;
 
-         // Create text that displays fields of declaration
-         var dec_fields = Declaration.class.getFields();
-         var text_fields = new ArrayList<Label>();
-         for(Field field : dec_fields) {
-            Object f;
+               try { f = field.get(dec); } catch (Exception e) { continue; }
 
-            try { f = field.get(dec); } catch (Exception e) { continue; }
+               var name = field.getName();
+               name = name.replaceAll("(\\p{Lower})(\\p{Upper})","$1 $2");
+               name = name.substring(0,1).toUpperCase() + name.substring(1);
+               var format = ": ";
+               Label l = null;
+               String elem = null;
+               if (f instanceof String) {
+                  elem = (String) f;
 
-            var name = field.getName();
-            name = name.replaceAll("(\\p{Lower})(\\p{Upper})","$1 $2");
-            name = name.substring(0,1).toUpperCase() + name.substring(1);
-            var format = ": ";
-            Label l = null;
-            String elem = null;
-            if (f instanceof String) {
-               elem = (String) f;
+               } else if (f instanceof Integer) {
+                  elem = Integer.toString((Integer) f);
 
-            } else if (f instanceof Integer) {
-               elem = Integer.toString((Integer) f);
-
-            } else if (f instanceof Boolean) {
-               elem = Boolean.toString((Boolean) f);
-            } else {
-               //shouldn't run in the current version of the code, but here for safety
-               continue;
+               } else if (f instanceof Boolean) {
+                  elem = Boolean.toString((Boolean) f);
+               } else {
+                  //shouldn't run in the current version of the code, but here for safety
+                  continue;
+               }
+               l = new Label(name + format + elem);
+               l.setFont(new Font("Montserrat", 24));
+               text_fields.add(l);
             }
-            l = new Label(name + format + elem);
+
+            // Add the declaration fields to the vbox
+            for (var f : text_fields) {
+               vbox.getChildren().add(f);
+            }
+
+            //add approval and reject buttons
+            vbox.getChildren().add(approveButton);
+            vbox.getChildren().add(rejectButton);
+         } else {
+            var l = new Label("No Declarations Yet");
             l.setFont(new Font("Montserrat", 24));
-            text_fields.add(l);
+            vbox.getChildren().add(l);
          }
-
-         // Add the declaration fields to the vbox
-         for (var f : text_fields) {
-            vbox.getChildren().add(f);
-         }
-
-         //add approval and reject buttons
-         vbox.getChildren().add(approveButton);
-         vbox.getChildren().add(rejectButton);
       });
 
       vbox.getChildren().add(getNextButton);
