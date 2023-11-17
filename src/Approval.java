@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.application.Platform;
 import javafx.geometry.*;
+import javafx.collections.*;
 
 public class Approval extends Application {
    private static Declaration dec;
@@ -27,23 +28,42 @@ public class Approval extends Application {
          333333, false, 13565);
       }
    }
-
+   /*
+   private Node getByUserData(Parent parent, Object data) {
+      for (Node n : parent.getChildren()) {
+          if (data.equals(n.getUserData())) {
+              return n;
+          }
+      }
+      return null;
+   }
+   */
    //precondition: dec must have been instantiated
     @Override
     public void start(Stage primaryStage) {
       primaryStage.setTitle("Approval");
 
-      //Create a Vbox to organize the elements vertically
+      // Create a Vbox to organize the elements vertically
       var vbox = new VBox(10);
+
+      var gnb_name = "getNextButton";
 
       // Create an approval button
       Button approveButton = new Button("Approve");
       approveButton.setOnAction(e -> {
+         //var getNextButton = getByUserData(vbox, "getNextButton");
          //clear previous declaration
+
+         Button oldNextButton = null;
+         for (Node n : vbox.getChildren()) {
+            if (gnb_name.equals(n.getUserData())) {
+               oldNextButton = (Button) n;
+            }
+         }
          vbox.getChildren().clear();
 
          //add the get next button
-         vbox.getChildren().add(getNextButton);
+         vbox.getChildren().add(oldNextButton);
 
          //to add during next sprint
       });
@@ -51,19 +71,30 @@ public class Approval extends Application {
       //create a rejection button
       Button rejectButton = new Button("Reject");
       rejectButton.setOnAction(e -> {
+         //var getNextButton = getByUserData(vbox, "getNextButton");
+
+         Button oldNextButton = null;
+         for (Node n : vbox.getChildren()) {
+            if (gnb_name.equals(n.getUserData())) {
+               oldNextButton = (Button) n;
+            }
+         }
+
          //clear previous declaration
          vbox.getChildren().clear();
 
          //add the get next button
-         vbox.getChildren().add(getNextButton);
+         vbox.getChildren().add(oldNextButton);
 
          //to add during next sprint
       });
 
-
+      // Create getNext button
       Button getNextButton = new Button("Get Next");
-      getNextButton.setOnAction(unused -> {
+      getNextButton.setUserData("getNextButton");
 
+      getNextButton.setOnAction(unused -> {
+         
          //clear previous declaration
          vbox.getChildren().clear();
 
