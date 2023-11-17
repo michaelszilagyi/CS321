@@ -1,5 +1,10 @@
+package test;
 import static org.junit.Assert.*;
 import org.junit.jupiter.api.Test;
+
+import Task;
+import WorkflowTable;
+import WorkflowTable.Step;
 
 import java.util.*;
 
