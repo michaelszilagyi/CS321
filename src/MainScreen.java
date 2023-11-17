@@ -71,7 +71,7 @@ public class MainScreen extends Application {
                 APPROVE.setMaxWidth(150);
                 grid.getChildren().add(APPROVE);
                 //same as above review button
-                //APPROVE.setOnAction(e -> primaryStage.setScene(DE_screen.getScene()));
+                APPROVE.setOnAction(e -> primaryStage.setScene(Approval.getScene()));
                 
                 grid.setAlignment(Pos.CENTER);
                 BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTBLUE, null, null);
