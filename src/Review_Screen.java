@@ -347,6 +347,7 @@ public class Review_Screen extends Application {
             }
 
             /* FIND NEXT DECLARATION */
+            /* 
             Boolean found = false;
             for (Declaration dec : MainScreen.database){
                 if (dec.declarationID == taskID2){
@@ -354,7 +355,9 @@ public class Review_Screen extends Application {
                     found = true;
                 }
             }
-            if (found.equals(false)){
+            */
+            curr2 = Declaration.getFromDB(taskID2);
+            if (curr2 == null){
                 resultLabel.setText("Database issue");
                 return;
             }
