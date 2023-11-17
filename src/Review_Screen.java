@@ -100,6 +100,10 @@ public class Review_Screen extends Application {
         /* ADD GRID UNDERNEATH THE TITLE */
         root.getChildren().add(grid);
 
+        /* HOME BUTTON */
+        Button home = new Button("Home");
+        grid.add(home, 1, 8);
+
         /* SUBMIT BUTTON */
         Button submit = new Button("Submit");
         grid.add(submit, 0, 7);
@@ -111,6 +115,11 @@ public class Review_Screen extends Application {
         /* RESULT LABEL */
         Label resultLabel = new Label();
         grid.add(resultLabel, 1, 7);
+
+        /* HOME BUTTON ACTIONS */
+        home.setOnAction(e -> {
+            MainScreen.getStage().setScene(MainScreen.getScene());
+        });
 
         /* SUBMIT BUTTON ACTIONS */
         submit.setOnAction(e -> {
