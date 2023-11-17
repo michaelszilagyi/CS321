@@ -62,7 +62,8 @@ public class MainScreen extends Application {
                 REV.setMaxWidth(150);
                 grid.getChildren().add(REV);
                 //change this to go to your screen
-                //REV.setOnAction(e -> primaryStage.setScene(DE_screen.getScene()));
+                REV.setOnAction(e -> primaryStage.setScene(Review_Screen.getScene()));
+                //REV.setOnAction(x -> System.out.println("SIZEEE: " + database.size()));
 
                 //APPROVER BUTTON
                 Button APPROVE = new Button("Approver");
