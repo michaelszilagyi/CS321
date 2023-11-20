@@ -37,8 +37,6 @@ public class Approval extends Application {
       var vbox = new VBox(10);
 
       Button home = new Button("Home");
-      GridPane.setConstraints(home, 1, 8);
-      home.setMaxWidth(100);
       vbox.getChildren().add(home);
 
       home.setOnAction(e -> //Get back to main menu - get its stage and set its stage
@@ -56,6 +54,7 @@ public class Approval extends Application {
          for (Node n : vbox.getChildren()) {
             if (gnb_name.equals(n.getUserData())) {
                oldNextButton = (Button) n;
+               break;
             }
          }
          vbox.getChildren().clear();
@@ -76,6 +75,7 @@ public class Approval extends Application {
          for (Node n : vbox.getChildren()) {
             if (gnb_name.equals(n.getUserData())) {
                oldNextButton = (Button) n;
+               break;
             }
             
          }
@@ -109,7 +109,7 @@ public class Approval extends Application {
          dec = null;
          if(!MainScreen.database.isEmpty()) {
             var n = WorkflowTable.getTask(WorkflowTable.Step.APPROVAL);
-            Declaration.getFromDB(n);
+            dec = Declaration.getFromDB(n);
          }
          if (dec != null) {
             // Create text that displays fields of declaration
