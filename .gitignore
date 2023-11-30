@@ -1,5 +1,6 @@
 *.class
 bin/*
+out/*
 .git/*
 *.jar
 target/*
@@ -9,3 +10,5 @@ lib/*
 src/*.class
 *.vscode
 .local/*
+.idea/*
+GIT.iml
