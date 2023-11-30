@@ -12,3 +12,5 @@ src/*.class
 .local/*
 .idea/*
 GIT.iml
+lib/*
+.vscode/*
