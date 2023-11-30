@@ -3,7 +3,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 import org.junit.jupiter.api.Test;
 
-import Declaration;
+//import Declaration;
 
 import java.lang.reflect.*;
 import java.lang.Integer;
